@@ -75,7 +75,6 @@ class Wrdsb_Schools {
 		$this->plugin_name = 'wrdsb-schools';
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -106,12 +105,6 @@ class Wrdsb_Schools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-loader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-i18n.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wrdsb-schools-admin.php';
@@ -123,23 +116,6 @@ class Wrdsb_Schools {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wrdsb-schools-public.php';
 
 		$this->loader = new Wrdsb_Schools_Loader();
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Wrdsb_Schools_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new Wrdsb_Schools_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 
