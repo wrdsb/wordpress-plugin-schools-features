@@ -1,4 +1,5 @@
 <?php
+namespace WRDSB\Schools;
 
 /**
  * Fired when the plugin is uninstalled.

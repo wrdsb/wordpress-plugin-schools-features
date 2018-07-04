@@ -1,4 +1,5 @@
 <?php
+namespace WRDSB\Schools;
 
 /**
  * The file that defines the core plugin class

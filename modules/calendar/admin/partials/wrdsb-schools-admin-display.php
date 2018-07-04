@@ -1,4 +1,5 @@
 <?php
+namespace WRDSB\Schools;
 
 /**
  * Provide a admin area view for the plugin

@@ -1,4 +1,5 @@
 <?php
+namespace WRDSB\Schools;
 
 /**
  * Register all actions and filters for the plugin

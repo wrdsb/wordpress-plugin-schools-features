@@ -1,4 +1,5 @@
 <?php
+namespace WRDSB\Schools;
 
 /**
  * The plugin bootstrap file
@@ -10,7 +11,7 @@
  *
  * @link              https://github.com/wrdsb
  * @since             1.0.0
- * @package           Wrdsb_Schools
+ * @package           WRDSB_Schools
  *
  * @wordpress-plugin
  * Plugin Name:       WRDSB Schools Features
@@ -19,8 +20,8 @@
  * Version:           1.0.0
  * Author:            WRDSB
  * Author URI:        https://github.com/wrdsb
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GPL-3.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       wrdsb-schools
  * Domain Path:       /languages
  */
@@ -35,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'WRDSB_SCHOOLS_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
@@ -43,7 +44,7 @@ define( 'PLUGIN_NAME_VERSION', '1.0.0' );
  */
 function activate_wrdsb_schools() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools-activator.php';
-	Wrdsb_Schools_Activator::activate();
+	Activator::activate();
 }
 
 /**
@@ -52,7 +53,7 @@ function activate_wrdsb_schools() {
  */
 function deactivate_wrdsb_schools() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools-deactivator.php';
-	Wrdsb_Schools_Deactivator::deactivate();
+	Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_wrdsb_schools' );

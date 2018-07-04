@@ -1,4 +1,5 @@
 <?php
+namespace WRDSB\Schools;
 
 /**
  * Fired during plugin deactivation
@@ -20,7 +21,7 @@
  * @subpackage Wrdsb_Schools/includes
  * @author     WRDSB <website@wrdsb.ca>
  */
-class Wrdsb_Schools_Deactivator {
+class Deactivator {
 
 	/**
 	 * Short Description. (use period)
