@@ -31,6 +31,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+require_once 'vendor/autoload.php';
+
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
@@ -38,32 +40,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WRDSB_SCHOOLS_VERSION', '1.0.0' );
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-wrdsb-schools-activator.php
- */
-function activate_wrdsb_schools() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools-activator.php';
-	Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-wrdsb-schools-deactivator.php
- */
-function deactivate_wrdsb_schools() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools-deactivator.php';
-	Deactivator::deactivate();
-}
-
-register_activation_hook( __FILE__, 'activate_wrdsb_schools' );
-register_deactivation_hook( __FILE__, 'deactivate_wrdsb_schools' );
-
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools.php';
+register_activation_hook( __FILE__, array( __NAMESPACE__ . '\\Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\\Deactivator', 'deactivate' ) );
 
 /**
  * Begins execution of the plugin.
@@ -76,8 +54,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools.php';
  */
 function run_wrdsb_schools() {
 
-	$plugin = new Main();
+	$plugin = new Plugin();
 	$plugin->run();
 
 }
+
 run_wrdsb_schools();

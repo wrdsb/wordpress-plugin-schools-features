@@ -26,7 +26,7 @@ namespace WRDSB\Schools;
  * @package    Wrdsb_Schools
  * @author     WRDSB <website@wrdsb.ca>
  */
-class Main {
+class Plugin {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -101,18 +101,18 @@ class Main {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/Loader.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/Admin_UI.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/Public_UI.php';
 
 		$this->loader = new Loader();
 
@@ -127,7 +127,7 @@ class Main {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new AdminUI( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Admin_UI( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -143,7 +143,7 @@ class Main {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new PublicUI( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Public_UI( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

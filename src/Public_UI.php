@@ -19,7 +19,7 @@ namespace WRDSB\Schools;
  * @package    Wrdsb_Schools
  * @author     WRDSB <website@wrdsb.ca>
  */
-class PublicUI {
+class Public_UI {
 
 	/**
 	 * The ID of this plugin.
