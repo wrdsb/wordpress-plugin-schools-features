@@ -8,7 +8,6 @@ namespace WRDSB\Schools;
  * @since      1.0.0
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/includes
  */
 
 /**
@@ -18,7 +17,6 @@ namespace WRDSB\Schools;
  *
  * @since      1.0.0
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/includes
  * @author     WRDSB <website@wrdsb.ca>
  */
 class Deactivator {

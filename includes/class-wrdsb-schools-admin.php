@@ -8,7 +8,6 @@ namespace WRDSB\Schools;
  * @since      1.0.0
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/admin
  */
 
 /**
@@ -18,10 +17,9 @@ namespace WRDSB\Schools;
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/admin
  * @author     WRDSB <website@wrdsb.ca>
  */
-class Wrdsb_Schools_Admin {
+class AdminUI {
 
 	/**
 	 * The ID of this plugin.

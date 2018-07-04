@@ -8,7 +8,6 @@ namespace WRDSB\Schools;
  * @since      1.0.0
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/includes
  */
 
 /**
@@ -19,10 +18,9 @@ namespace WRDSB\Schools;
  * run function to execute the list of actions and filters.
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/includes
  * @author     WRDSB <website@wrdsb.ca>
  */
-class Wrdsb_Schools_Loader {
+class Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

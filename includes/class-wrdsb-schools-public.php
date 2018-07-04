@@ -8,7 +8,6 @@ namespace WRDSB\Schools;
  * @since      1.0.0
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/public
  */
 
 /**
@@ -18,10 +17,9 @@ namespace WRDSB\Schools;
  * enqueue the public-facing stylesheet and JavaScript.
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/public
  * @author     WRDSB <website@wrdsb.ca>
  */
-class Wrdsb_Schools_Public {
+class PublicUI {
 
 	/**
 	 * The ID of this plugin.

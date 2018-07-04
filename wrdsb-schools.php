@@ -76,7 +76,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wrdsb-schools.php';
  */
 function run_wrdsb_schools() {
 
-	$plugin = new Wrdsb_Schools();
+	$plugin = new Main();
 	$plugin->run();
 
 }

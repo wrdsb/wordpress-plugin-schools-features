@@ -11,7 +11,6 @@ namespace WRDSB\Schools;
  * @since      1.0.0
  *
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/includes
  */
 
 /**
@@ -25,10 +24,9 @@ namespace WRDSB\Schools;
  *
  * @since      1.0.0
  * @package    Wrdsb_Schools
- * @subpackage Wrdsb_Schools/includes
  * @author     WRDSB <website@wrdsb.ca>
  */
-class Wrdsb_Schools {
+class Main {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -36,7 +34,7 @@ class Wrdsb_Schools {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wrdsb_Schools_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -68,8 +66,8 @@ class Wrdsb_Schools {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+		if ( defined( 'WRDSB_SCHOOLS_VERSION' ) ) {
+			$this->version = WRDSB_SCHOOLS_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
@@ -116,7 +114,7 @@ class Wrdsb_Schools {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-public.php';
 
-		$this->loader = new Wrdsb_Schools_Loader();
+		$this->loader = new Loader();
 
 	}
 
@@ -129,7 +127,7 @@ class Wrdsb_Schools {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Wrdsb_Schools_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new AdminUI( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -145,7 +143,7 @@ class Wrdsb_Schools {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wrdsb_Schools_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new PublicUI( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -176,7 +174,7 @@ class Wrdsb_Schools {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Wrdsb_Schools_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
