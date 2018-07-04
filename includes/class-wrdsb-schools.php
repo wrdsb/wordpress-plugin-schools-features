@@ -107,13 +107,13 @@ class Wrdsb_Schools {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wrdsb-schools-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wrdsb-schools-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wrdsb-schools-public.php';
 
 		$this->loader = new Wrdsb_Schools_Loader();
 
