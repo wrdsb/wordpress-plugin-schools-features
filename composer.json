@@ -12,5 +12,7 @@
     "autoload": {
         "psr-4": {"WRDSB\\Schools\\": "src/"}
     },
-    "require": {}
+    "require": {
+        "pimple/pimple": "^3.2"
+    }
 }
