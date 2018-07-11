@@ -1,6 +1,9 @@
 <?php
 namespace WRDSB\Schools;
 
+use \WRDSB\Schools\Modules\UI\Authenticated;
+use \WRDSB\Schools\Modules\UI\Unauthenticated;
+
 /**
  * The plugin bootstrap file
  *
@@ -32,6 +35,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 require_once 'vendor/autoload.php';
 
+/**
+ * Instantiate the container.
+ */
 $container = get_container();
 
 /**
@@ -50,14 +56,26 @@ $container['version'] = '1.0.0';
  * Instantiate main plugin class.
  * Pass plugin name and version from container to constructor.
  */
-$container['plugin'] = $container->factory( function( $c ) {
+$container['plugin'] = function( $c ) {
 	return new Plugin( $c['plugin_name'], $c['version'] );
-});
+};
+
+$container['authenticated_ui'] = function( $c ) {
+	return new Authenticated( $c['plugin'] );
+};
+
+$container['unauthenticated_ui'] = function( $c ) {
+	return new Unauthenticated( $c['plugin'] );
+};
 
 register_activation_hook( __FILE__, array( __NAMESPACE__ . '\\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\\Deactivator', 'deactivate' ) );
 
 $plugin = $container['plugin'];
+
+$authenticated_ui   = $container['authenticated_ui'];
+$unauthenticated_ui = $container['unauthenticated_ui'];
+
 $plugin->register_hooks();
 
 
