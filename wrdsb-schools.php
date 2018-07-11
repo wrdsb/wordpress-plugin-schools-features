@@ -30,26 +30,35 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
-define( 'WRDSB_SCHOOLS_VERSION', '1.0.0' );
-
 require_once 'vendor/autoload.php';
 
 $container = get_container();
 
+/**
+ * Current plugin name.
+ * Change this to your plugin's slug.
+ */
+$container['plugin_name'] = 'wrdsb-schools';
+
+/**
+ * Current plugin version.
+ * Start at version 1.0.0 and use SemVer - https://semver.org
+ */
+$container['version'] = '1.0.0';
+
+/**
+ * Instantiate main plugin class.
+ * Pass plugin name and version from container to constructor.
+ */
 $container['plugin'] = $container->factory( function( $c ) {
-	return new Plugin();
+	return new Plugin( $c['plugin_name'], $c['version'] );
 });
 
 register_activation_hook( __FILE__, array( __NAMESPACE__ . '\\Activator', 'activate' ) );
 register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\\Deactivator', 'deactivate' ) );
 
 $plugin = $container['plugin'];
-$plugin->run();
+$plugin->register_hooks();
 
 
 /**
